@@ -80,13 +80,14 @@
         </div>
     </footer>
 
-    <script>
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
+<script>
+        var faqButtons = document.querySelectorAll('.faq-question');
+        for (var i = 0; i < faqButtons.length; i++) {
+            faqButtons[i].addEventListener('click', function() {
+                var item = this.parentElement;
                 item.classList.toggle('active');
             });
-        });
+        }
     </script>
 </body>
 </html>
