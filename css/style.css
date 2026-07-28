@@ -1,0 +1,712 @@
+/* ==========================================================================
+   新懋鋁業股份有限公司 New-Green Aluminium CO., LTD.
+   全站統一樣式檔 (css/style.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 變數與基礎設定 (Variables & Reset)
+   -------------------------------------------------------------------------- */
+:root {
+    --primary-color: #0284c7;       /* 科技鋁藍 */
+    --primary-hover: #0369a1;
+    --dark-bg: #0f172a;              /* 深藍灰色 */
+    --light-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --------------------------------------------------------------------------
+   2. 頁首與頂部導覽列 (純白質感風格)
+   -------------------------------------------------------------------------- */
+.navbar-glass {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;                                /* 背景改為純白色 */
+    border-bottom: 1px solid var(--border-color);       /* 淺灰色底邊框 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);          /* 質感微陰影 */
+    padding: 12px 0;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO 區域（圖片 + 中英公司全銜） */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--dark-bg);          /* 中文全銜深色 */
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    line-height: 1.25;
+}
+
+.logo-text span {
+    color: var(--primary-color);      /* 英文全銜科技藍 */
+    font-size: 12px;
+    font-weight: 400;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+/* 選項連結 */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-item {
+    color: var(--text-main);          /* 文字改為深色 */
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover, 
+.nav-item.active {
+    color: var(--primary-color);      /* Hover與當前頁改為科技藍 */
+    font-weight: 600;
+}
+
+/* 發光線上詢價按鈕 */
+.btn-primary-glow {
+    background: var(--primary-color);
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary-glow:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 0 25px rgba(2, 132, 199, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   3. 主視覺 Banner 與頁頭 Theme (背景載入 images/Taichung.jpg)
+   -------------------------------------------------------------------------- */
+.hero-banner-image {
+    position: relative;
+    /* 移除 linear-gradient 遮罩，只保留 images/Taichung.jpg 背景圖 */
+    background: url('../images/Taichung.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 100px 0;
+}
+
+/* 加上微小文字陰影，確保純圖背景下白字依舊醒目清晰 */
+.hero-banner-image h1,
+.hero-banner-image p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+.page-header-theme {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 70px 0;
+}
+
+.badge-tech {
+    display: inline-block;
+    background: rgba(2, 132, 199, 0.25);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.section-padding { 
+    padding: 70px 0; 
+}
+
+.bg-soft-gray { 
+    background-color: #ffffff; 
+}
+
+.section-title-center { 
+    text-align: center; 
+    margin-bottom: 40px; 
+}
+
+.sub-heading { 
+    color: var(--primary-color); 
+    font-size: 12px; 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+}
+
+/* 通用按鈕 */
+.btn-modern-primary {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.btn-modern-primary:hover { 
+    background: var(--primary-hover); 
+}
+
+.btn-modern-outline {
+    display: inline-block;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-modern-outline:hover { 
+    background: var(--primary-color); 
+    color: #ffffff; 
+}
+
+/* --------------------------------------------------------------------------
+   4. 產品與加工服務卡片 (Products & Processing Cards)
+   -------------------------------------------------------------------------- */
+.grid-3-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* 新增：產品頁面現代網格與圖片卡片樣式 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.product-card-modern {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-img-box {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card-modern:hover .product-img-box img {
+    transform: scale(1.05);
+}
+
+.product-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.product-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-content h3 {
+    font-size: 20px;
+    color: var(--dark-bg);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.product-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.product-spec-list {
+    list-style: none;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+    flex-grow: 1;
+}
+
+.product-spec-list li {
+    font-size: 13px;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.btn-card-quote {
+    display: block;
+    text-align: center;
+    background: #f8fafc;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.btn-card-quote:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.product-body { 
+    padding: 24px; 
+}
+
+.product-body h3 { 
+    font-size: 20px; 
+    margin-bottom: 10px; 
+    color: var(--dark-bg); 
+}
+
+.product-body p { 
+    font-size: 14px; 
+    color: var(--text-muted); 
+}
+
+.tech-spec-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.origin-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+/* 分類篩選按鈕 */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* --------------------------------------------------------------------------
+   5. 全台據點地圖卡片 (Locations Page Styles)
+   -------------------------------------------------------------------------- */
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.location-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.location-header {
+    background: #f8fafc;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.location-body {
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+}
+
+.location-info {
+    flex: 1;
+}
+
+.location-info p {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.location-info i {
+    color: var(--primary-color);
+    margin-top: 4px;
+    width: 16px;
+}
+
+.qr-code-box {
+    width: 110px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.qr-code-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: opacity 0.2s ease;
+}
+
+.qr-code-box img:hover {
+    opacity: 0.85;
+}
+
+.qr-code-box span {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+.map-container {
+    width: 100%;
+    height: 250px;
+    border-top: 1px solid var(--border-color);
+    background: #e2e8f0;
+}
+
+.map-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. 常見問題 (FAQ) & 線上詢價單 (Quote Form)
+   -------------------------------------------------------------------------- */
+.faq-item { 
+    background: #ffffff; 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
+    margin-bottom: 12px; 
+}
+
+.faq-question { 
+    width: 100%; 
+    padding: 18px 20px; 
+    text-align: left; 
+    background: none; 
+    border: none; 
+    font-weight: 600; 
+    font-size: 16px; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    color: var(--dark-bg);
+}
+
+.faq-answer { 
+    display: none; 
+    padding: 0 20px 20px; 
+    color: var(--text-muted); 
+    font-size: 14px; 
+}
+
+.faq-item.active .faq-answer { 
+    display: block; 
+}
+
+.quote-form-card { 
+    background: #ffffff; 
+    border: 1px solid var(--border-color); 
+    padding: 30px; 
+    border-radius: var(--radius-md); 
+}
+
+.form-grid-2 { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+}
+
+.form-group { 
+    margin-bottom: 20px; 
+}
+
+.form-group label { 
+    display: block; 
+    font-size: 14px; 
+    font-weight: 600; 
+    margin-bottom: 8px; 
+    color: var(--dark-bg);
+}
+
+.form-control { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--border-color); 
+    border-radius: var(--radius-sm); 
+    background: #f8fafc; 
+    font-size: 14px;
+    color: var(--text-main);
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. 頁尾 (Footer)
+   -------------------------------------------------------------------------- */
+.footer-dark {
+    background: #090d16;
+    color: #94a3b8;
+    padding: 60px 0 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand h3, 
+.footer-nav h4 { 
+    color: #ffffff; 
+    margin-bottom: 12px; 
+}
+
+.footer-nav ul { 
+    list-style: none; 
+}
+
+.footer-nav li { 
+    margin-bottom: 10px; 
+}
+
+.footer-nav a { 
+    color: #94a3b8; 
+    text-decoration: none; 
+    font-size: 14px; 
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover { 
+    color: #ffffff; 
+}
+
+.footer-copyright { 
+    border-top: 1px solid rgba(255, 255, 255, 0.05); 
+    padding-top: 20px; 
+    font-size: 13px; 
+    text-align: center; 
+}
+
+/* --------------------------------------------------------------------------
+   8. 響應式排版 (Responsive Web Design)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .grid-3-products,
+    .product-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .locations-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .footer-grid { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links { 
+        display: none; 
+    }
+    .form-grid-2 { 
+        grid-template-columns: 1fr; 
+    }
+    .logo-text span { 
+        font-size: 11px; 
+    }
+    .hero-banner-image {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-3-products,
+    .product-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .location-body { 
+        flex-direction: column-reverse; 
+    }
+    .qr-code-box { 
+        width: 100%; 
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+    }
+    .qr-code-box img { 
+        width: 80px; 
+    }
+}
+/* 關於我們 - 深耕在地邁向全球背景區塊 */
+/* 關於我們 - 深耕在地邁向全球區塊 (純背景圖無遮罩) */
+.about-global-bg {
+    position: relative;
+    /* 移除 linear-gradient 遮罩，只保留背景圖 */
+    background: url('../images/global-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+/* 加上文字陰影，確保在純背景圖下白字依然清晰可讀 */
+.about-global-bg h1,
+.about-global-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+/* 產品頁主頁頭區塊 (去除背景色，純背景圖) */
+.products-header-bg {
+    position: relative;
+    /* 完全去除背景顏色/漸層遮罩，只載入圖片 */
+    background: url('../images/products-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+/* 加上文字陰影，確保在任何背景圖片上文字依舊清晰可見 */
+.products-header-bg h1,
+.products-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}

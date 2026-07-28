@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鋁材與加工服務 | 新懋鋁業股份有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 產品頁專屬設計樣式 */
+        .spec-table-container {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 25px;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .custom-table th {
+            background: #f1f5f9;
+            color: var(--dark-bg);
+            padding: 14px 18px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .custom-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .custom-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .process-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .process-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: rgba(2, 132, 199, 0.15);
+            font-weight: 900;
+        }
+
+        .process-card h3 {
+            font-size: 18px;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .process-card h3 i {
+            color: var(--primary-color);
+        }
+
+        .process-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .material-feature-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .material-feature-list li {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .material-feature-list li i {
+            color: var(--primary-color);
+            font-size: 11px;
+        }
+
+        @media (max-width: 992px) {
+            .process-grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 576px) {
+            .process-grid-3 { grid-template-columns: 1fr; }
+            .custom-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header class="navbar-glass">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+                <span class="logo-text">
+                    新懋鋁業股份有限公司
+                    <span>New-Green Aluminium CO., LTD.</span>
+                </span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item">回首頁</a>
+                <a href="about.html" class="nav-item">關於新懋</a>
+                <a href="products.html" class="nav-item active">鋁材與加工服務</a>
+                <a href="locations.html" class="nav-item">全台據點地圖</a>
+                <a href="faq.html" class="nav-item">常見問題</a>
+                <a href="quote.html" class="btn-primary-glow">線上詢價</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主頁頭區塊 -->
+   <!-- 主頁頭區塊 -->
+<section class="products-header-bg">
+        <div class="container">
+            <span class="badge-tech"><i class="fas fa-cubes"></i> PRODUCTS & SERVICES</span>
+            <h1 style="font-size: 36px; margin-top: 10px; font-weight: 700;">優質鋁材批發 ‧ 快速精準裁切</h1>
+            <p style="color: #ffffff; font-size: 16px; margin-top: 8px;">專營中鋁與各國進口高品質鋁合金板材與擠型材，提供專業鋸切與銑面加工，滿足您的材料需求。</p>
+        </div>
+    </section>
+
+    <!-- 產品列表區塊 (無頁籤直接陳列) -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-center" style="margin-bottom: 35px;">
+                <span class="sub-heading">ALUMINIUM MATERIALS</span>
+                <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">主力鋁合金材料供應</h2>
+            </div>
+
+            <!-- 產品卡片列表 -->
+            <div class="grid-3-products" id="productGrid">
+
+                <!-- 產品 1 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">5052 / 5083 合金</span>
+                        <span class="origin-tag">中鋁 / 進口</span>
+                        <h3>耐蝕耐海鋁合金板</h3>
+                        <p>具備極佳的耐腐蝕性與良好的成型性、焊接性能，廣泛應用於船舶、汽車零件、醫療設備及一般機械結構加工。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 優異耐海水中與工業大氣腐蝕性</li>
+                            <li><i class="fas fa-check"></i> 適合彎曲、衝壓及各種加工成型</li>
+                            <li><i class="fas fa-check"></i> 常用厚度庫存齊全，可精準裁切</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 產品 2 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">6061-T6 / T651</span>
+                        <span class="origin-tag">日本 / 韓國 / 瑞士</span>
+                        <h3>高強度結構鋁合金板</h3>
+                        <p>經熱處理預拉伸（T651）處理，加工後不易變形，極佳的切削加工性與陽極氧化反應效果，為半導體與自動化設備首選。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 機械強度高且加工切削順暢</li>
+                            <li><i class="fas fa-check"></i> 內應力極低，精密 Milling 後平整度佳</li>
+                            <li><i class="fas fa-check"></i> 適用於自動化治具、精密模具與光電設備</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 產品 3 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">7075-T651</span>
+                        <span class="origin-tag">美歐進口 / 瑞士</span>
+                        <h3>超硬航太級鋁合金板</h3>
+                        <p>屬於高強度鋁鋅鎂銅合金，硬度高且強韌，常用於航太零組件、高應力結構件、高精密衝壓模具與高載重機器人手臂。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 極高機械拉伸強度與抗疲勞性</li>
+                            <li><i class="fas fa-check"></i> 加工性能優良，耐磨耗度極高</li>
+                            <li><i class="fas fa-check"></i> 提供原廠材質證明（MTC）與品質保證</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 產品 4 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">6061 / 6063 圓棒</span>
+                        <span class="origin-tag">中鋁 / 各國進口</span>
+                        <h3>精密鋁圓棒材</h3>
+                        <p>提供各種外徑尺寸之擠型與車削級圓棒，真圓度佳，廣泛用於 CNC 數控車床加工零組件、軸心與各式連接件。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 外徑尺寸規格齊全，備料充足</li>
+                            <li><i class="fas fa-check"></i> 表面平整無瑕疵，易於自動化送料切削</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 產品 5 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">扁條 / 方條 / 角鋁</span>
+                        <span class="origin-tag">工業擠型材</span>
+                        <h3>規格型材與異型材</h3>
+                        <p>備有豐富的鋁扁條、鋁方條與等邊/不等邊角鋁，結構強度佳，適合機架結構建置、邊框防護及各類機械修補與組裝。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 直線性佳，斷面尺寸精確</li>
+                            <li><i class="fas fa-check"></i> 支持定尺鋸切，減少現場二次加工損耗</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 產品 6 -->
+                <div class="product-card-modern">
+                    <div class="product-body">
+                        <span class="tech-spec-tag">兩面銑面 / 單面銑面</span>
+                        <span class="origin-tag">廠內加工精板</span>
+                        <h3>高平整高精密銑面板</h3>
+                        <p>由廠內專用銑面設備進行精密切削，雙面膜保護，公差極小，省去客戶收到材料後自行銑面加工的時間與成本。</p>
+                        <ul class="material-feature-list">
+                            <li><i class="fas fa-check"></i> 平整度與公差達到微米級規格要求</li>
+                            <li><i class="fas fa-check"></i> 雙面貼保護膜，防止運送與加工刮傷</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 六大廠內加工服務 -->
+    <section class="section-padding bg-soft-gray">
+        <div class="container">
+            <div class="section-title-center">
+                <span class="sub-heading">PROCESSING SERVICES</span>
+                <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">廠內專業加工服務能力</h2>
+                <p style="color: var(--text-muted); font-size: 15px; margin-top: 8px;">四廠配備現代化裁切與加工機具，為您節省成本、縮短交期。</p>
+            </div>
+
+            <div class="process-grid-3">
+                <div class="process-card">
+                    <div class="process-badge">01</div>
+                    <h3><i class="fas fa-ruler-combined"></i> 專業鋸切與精準裁切</h3>
+                    <p>引進高效能鋸床與鋸片，提供鋁板與擠型材之直角定尺寸裁切，切口平整無毛邊，滿足各種客製尺寸需求。</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-badge">02</div>
+                    <h3><i class="fas fa-layer-group"></i> 銑面加工 (Milling)</h3>
+                    <p>專用雙面與單面銑面機具，精準掌控厚度公差與極佳的表面粗糙度，適合自動化設備精密治具基板。</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-badge">03</div>
+                    <h3><i class="fas fa-box-open"></i> 厚板與重型裁切</h3>
+                    <p>針對大型超厚鋁板（100mm 以上）提供大馬力鋸切能力，切面垂直度高，調撥快速，滿足重型機械需求。</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-badge">04</div>
+                    <h3><i class="fas fa-shield-alt"></i> 雙面覆膜防護</h3>
+                    <p>出廠前可依需求進行雙面 PE 或雷射保護膜貼覆，有效避免搬運、鋸切及客戶端加工過程中的表面刮傷。</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-badge">05</div>
+                    <h3><i class="fas fa-truck-fast"></i> 跨廠快調與包裝</h3>
+                    <p>結合台中、龜山、竹北、高雄四大據點庫存系統，提供完善的防潮防碰撞包裝與全台專車物流快速送達。</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-badge">06</div>
+                    <h3><i class="fas fa-file-contract"></i> 材質證明與品質檢驗</h3>
+                    <p>嚴格控管材料進貨來源，出貨皆可附上原廠材質證明與膜厚/尺寸檢驗報告，品質安心有保障。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 材質對照與規格參考表 -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-center">
+                <span class="sub-heading">TECHNICAL SPECIFICATIONS</span>
+                <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">常見鋁合金材質特性比較表</h2>
+            </div>
+
+            <div class="spec-table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>合金牌號</th>
+                            <th>主要合金元素</th>
+                            <th>切削加工性</th>
+                            <th>耐腐蝕性</th>
+                            <th>焊接性能</th>
+                            <th>主要應用領域</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>5052-H32</strong></td>
+                            <td>鎂 (Mg)</td>
+                            <td>中等</td>
+                            <td><span style="color: #16a34a; font-weight: 600;">極佳</span></td>
+                            <td>優良</td>
+                            <td>外殼鈑金、船舶、汽車零組件、通用機械</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5083-O/H111</strong></td>
+                            <td>鎂 (Mg) / 錳 (Mn)</td>
+                            <td>中等</td>
+                            <td><span style="color: #16a34a; font-weight: 600;">極佳 (抗海水)</span></td>
+                            <td>極佳</td>
+                            <td>壓力容器、海洋工程、重型結構件、LNG 槽</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6061-T6/T651</strong></td>
+                            <td>鎂 (Mg) / 矽 (Si)</td>
+                            <td><span style="color: #0284c7; font-weight: 600;">優良</span></td>
+                            <td>良好</td>
+                            <td>良好</td>
+                            <td>半導體設備、自動化治具、結構件、腳踏車車架</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7075-T651</strong></td>
+                            <td>鋅 (Zn) / 鎂 (Mg) / 銅 (Cu)</td>
+                            <td><span style="color: #0284c7; font-weight: 600;">極佳</span></td>
+                            <td>中等</td>
+                            <td>不建議</td>
+                            <td>航太零組件、高強度模具、高載重機械手臂、高應力組件</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer-dark">
+        <div class="container footer-copyright">
+            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

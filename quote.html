@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上詢價 | 新懋鋁業股份有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header class="navbar-glass">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+                <span class="logo-text">
+                    新懋鋁業股份有限公司
+                    <span>New-Green Aluminium CO., LTD.</span>
+                </span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item">回首頁</a>
+                <a href="about.html" class="nav-item">關於新懋</a>
+                <a href="products.html" class="nav-item">鋁材與加工服務</a>
+                <a href="locations.html" class="nav-item">全台據點地圖</a>
+                <a href="faq.html" class="nav-item">常見問題</a>
+                <a href="quote.html" class="btn-primary-glow">線上詢價</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主頁頭區塊 -->
+    <section class="page-header-theme">
+        <div class="container">
+            <span class="badge-tech"><i class="fas fa-paper-plane"></i> ONLINE INQUIRY</span>
+            <h1 style="font-size: 36px; margin-top: 10px; font-weight: 700;">快速線上詢價</h1>
+            <p style="color: #cbd5e1; font-size: 16px; margin-top: 8px;">填寫您的材料需求與加工規格，我們將安排專人盡速為您報價與回覆。</p>
+        </div>
+    </section>
+
+    <!-- 詢價表單區塊 -->
+    <section class="section-padding">
+        <div class="container-narrow">
+            <div class="quote-form-card">
+                
+                <!-- 使用 JavaScript AJAX 送出，指向 send_mail.php -->
+                <form id="quoteForm" onsubmit="submitQuoteForm(event)">
+                    
+                    <div class="form-grid-2">
+                        <!-- 1. 公司名稱 -->
+                        <div class="form-group">
+                            <label for="company"><i class="fas fa-building" style="color: var(--primary-color);"></i> 公司名稱 *</label>
+                            <input type="text" id="company" name="company" class="form-control" placeholder="請輸入貴公司名稱" required>
+                        </div>
+
+                        <!-- 2. 聯絡人 -->
+                        <div class="form-group">
+                            <label for="contact"><i class="fas fa-user" style="color: var(--primary-color);"></i> 聯絡人 *</label>
+                            <input type="text" id="contact" name="contact" class="form-control" placeholder="請輸入您的姓名/稱呼" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <!-- 3. 聯絡電話 -->
+                        <div class="form-group">
+                            <label for="phone"><i class="fas fa-phone" style="color: var(--primary-color);"></i> 聯絡電話 *</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="例：04-23501420 或 0912-345678" required>
+                        </div>
+
+                        <!-- 4. 電子郵件 -->
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope" style="color: var(--primary-color);"></i> 電子郵件 *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="例：service@company.com" required>
+                        </div>
+                    </div>
+
+                    <!-- 5. 備註裁切尺寸、數量或公差說明 -->
+                    <div class="form-group">
+                        <label for="notes"><i class="fas fa-clipboard-list" style="color: var(--primary-color);"></i> 備註裁切尺寸、數量或公差說明 *</label>
+                        <textarea id="notes" name="notes" class="form-control" rows="6" placeholder="請說明您所需的鋁材牌號、厚度/長寬尺寸、需求數量，或特殊的鋸切/銑面公差要求...&#10;例如：6061-T651 板材 20t x 300 x 500 mm，數量 5 塊。" required></textarea>
+                    </div>
+
+                    <!-- 送出按鈕 -->
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" id="submitBtn" class="btn-modern-primary" style="width: 100%; border: none; font-size: 16px; cursor: pointer; padding: 14px;">
+                            <i class="fas fa-paper-plane"></i> 送出詢價需求
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer-dark">
+        <div class="container footer-copyright">
+            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 前端 AJAX 發送腳本 -->
+  <script>
+function submitQuoteForm(event) {
+    event.preventDefault(); // 阻止表單傳統刷新
+
+    var submitBtn = document.getElementById('submitBtn');
+    var originalBtnText = submitBtn.innerHTML;
+
+    // 變更按鈕狀態為發送中
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 發送信件中...';
+
+    var formData = new FormData(document.getElementById('quoteForm'));
+
+    // 發送 AJAX 請求至自架的 send_mail.php
+    fetch('send_mail.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if (data.status === 'success') {
+            alert('感謝您的詢價！需求已順利發送至新懋鋁業，我們將由專人與您聯繫。');
+            document.getElementById('quoteForm').reset();
+        } else {
+            alert('發送失敗：' + data.message);
+        }
+    })
+    .catch(function(error) {
+        alert('系統連線異常或伺服器未設定 PHP，請稍後再試或直接來電與我們聯繫。');
+    })
+    .then(function() { // 代替 .finally() 以提升舊編輯器與舊瀏覽器相容性
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    });
+}
+</script>
+
+</body>
+</html>

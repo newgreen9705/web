@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全台據點地圖 | 新懋鋁業股份有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .location-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .location-header {
+            background: #f8fafc;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .location-body {
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .location-info {
+            flex: 1;
+        }
+
+        .location-info p {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .location-info i {
+            color: var(--primary-color);
+            margin-top: 4px;
+            width: 16px;
+        }
+
+        .qr-code-box {
+            width: 110px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .qr-code-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: opacity 0.2s;
+        }
+
+        .qr-code-box img:hover {
+            opacity: 0.85;
+        }
+
+        .qr-code-box span {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            border-top: 1px solid var(--border-color);
+            background: #e2e8f0;
+        }
+
+        .map-container iframe {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        @media (max-width: 992px) {
+            .locations-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .location-body { flex-direction: column-reverse; }
+            .qr-code-box { width: 100%; display: flex; align-items: center; gap: 15px; }
+            .qr-code-box img { width: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+   <header class="navbar-glass">
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+            <span class="logo-text">
+                新懋鋁業股份有限公司
+                <span>New-Green Aluminium CO., LTD.</span>
+            </span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">回首頁</a>
+            <a href="about.html" class="nav-item">關於新懋</a>
+            <a href="products.html" class="nav-item">鋁材與加工服務</a>
+            <a href="locations.html" class="nav-item">全台據點地圖</a>
+            <a href="faq.html" class="nav-item">常見問題</a>
+            <a href="quote.html" class="btn-primary-glow">線上詢價</a>
+        </nav>
+    </div>
+</header>
+
+    <section class="page-header-theme">
+        <div class="container">
+            <span class="badge-tech"><i class="fas fa-map-location-dot"></i> LOCATIONS</span>
+            <h1>全台服務據點</h1>
+            <p>北、中、南四大專業廠區，結合在地物流與加工服務，即時響應您的材料需求。</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="locations-grid">
+
+                <!-- 台中廠 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-title">
+                            <i class="fas fa-industry"></i> 台中廠 (總公司)
+                        </div>
+                        <span class="tech-spec-tag">中部營運據點</span>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-info">
+                            <p><i class="fas fa-location-dot"></i> <span>台中市南屯區工業區二十五路19號</span></p>
+                            <p><i class="fas fa-phone"></i> <span>TEL: 04-23501420</span></p>
+                            <p><i class="fas fa-fax"></i> <span>FAX: 04-23501418</span></p>
+                        </div>
+                        <div class="qr-code-box">
+                            <a href="https://line.me/R/ti/p/gAhFEjsseb" target="_blank" title="點擊加入台中廠 LINE">
+                                <img src="QR/TaichungQR.png" alt="台中廠 LINE QR Code">
+                            </a>
+                            <span>官方 LINE 諮詢</span>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d541.1300709115751!2d120.60199841471852!3d24.1620972445889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e147dc0f037%3A0xa9d91421854a9f1!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213184879!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+                <!-- 龜山廠 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-title">
+                            <i class="fas fa-industry"></i> 龜山廠
+                        </div>
+                        <span class="tech-spec-tag">北部營運據點</span>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-info">
+                            <p><i class="fas fa-location-dot"></i> <span>桃園市龜山區茶專路38號</span></p>
+                            <p><i class="fas fa-phone"></i> <span>TEL: 03-3185459</span></p>
+                            <p><i class="fas fa-fax"></i> <span>FAX: 03-3185458</span></p>
+                        </div>
+                        <div class="qr-code-box">
+                            <a href="https://line.me/R/ti/p/XBpvS7LMkl" target="_blank" title="點擊加入龜山廠 LINE">
+                                <img src="QR/GuishanQR.png" alt="龜山廠 LINE QR Code">
+                            </a>
+                            <span>官方 LINE 諮詢</span>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.00471655128825!2d121.35749858932957!3d24.99755156492316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681d0002e32731%3A0xecd5b89a245b841b!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213297306!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+                <!-- 竹北廠 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-title">
+                            <i class="fas fa-industry"></i> 竹北廠
+                        </div>
+                        <span class="tech-spec-tag">竹苗營運據點</span>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-info">
+                            <p><i class="fas fa-location-dot"></i> <span>新竹縣竹北市長青路一段130號</span></p>
+                            <p><i class="fas fa-phone"></i> <span>TEL: 03-5566990</span></p>
+                            <p><i class="fas fa-fax"></i> <span>FAX: 03-5565907</span></p>
+                        </div>
+                        <div class="qr-code-box">
+                            <a href="https://line.me/R/ti/p/aOJr0dWdhn" target="_blank" title="點擊加入竹北廠 LINE">
+                                <img src="QR/JhubeiQR.png" alt="竹北廠 LINE QR Code">
+                            </a>
+                            <span>官方 LINE 諮詢</span>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.28494560944563!2d120.956349633615!3d24.844746211491056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34683443a13f6535%3A0x9491f6939506903e!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213273802!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+                <!-- 高雄廠 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-title">
+                            <i class="fas fa-industry"></i> 高雄廠
+                        </div>
+                        <span class="tech-spec-tag">南部營運據點</span>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-info">
+                            <p><i class="fas fa-location-dot"></i> <span>高雄市大寮區和業六路二號</span></p>
+                            <p><i class="fas fa-phone"></i> <span>TEL: 07-7880560</span></p>
+                            <p><i class="fas fa-fax"></i> <span>FAX: 07-7880121</span></p>
+                        </div>
+                        <div class="qr-code-box">
+                            <a href="https://line.me/R/ti/p/aNuIEkEQhv" target="_blank" title="點擊加入高雄廠 LINE">
+                                <img src="QR/KaohsiungQR.png" alt="高雄廠 LINE QR Code">
+                            </a>
+                            <span>官方 LINE 諮詢</span>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.496648728756!2d120.4301197315809!3d22.61260041483241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e1b480d9cc3a7%3A0x456e90e3068999b0!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213248834!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer-dark">
+        <div class="container footer-copyright">
+            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

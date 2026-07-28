@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於新懋 | 新懋鋁業股份有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 關於我們頁面專屬微調樣式 */
+        .about-story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-story-text h2 {
+            font-size: 28px;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .about-story-text p {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .philosophy-quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 24px;
+            border-radius: var(--radius-sm);
+            margin: 25px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-bg);
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0f2fe;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            color: var(--dark-bg);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .milestone-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 992px) {
+            .about-story-grid { grid-template-columns: 1fr; gap: 30px; }
+            .values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header class="navbar-glass">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+                <span class="logo-text">
+                    新懋鋁業股份有限公司
+                    <span>New-Green Aluminium CO., LTD.</span>
+                </span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item">回首頁</a>
+                <a href="about.html" class="nav-item active">關於新懋</a>
+                <a href="products.html" class="nav-item">鋁材與加工服務</a>
+                <a href="locations.html" class="nav-item">全台據點地圖</a>
+                <a href="faq.html" class="nav-item">常見問題</a>
+                <a href="quote.html" class="btn-primary-glow">線上詢價</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主頁頭區塊 -->
+<section class="about-global-bg">
+    <div class="container">
+        <span class="badge-tech"><i class="fas fa-globe"></i> GLOBAL VISION</span>
+        <h1 style="font-size: 36px; margin-top: 10px; font-weight: 700;">深耕在地 ‧ 邁向全球</h1>
+        <p style="color: #cbd5e1; font-size: 16px; margin-top: 8px;">
+            跨越數十載的專業累積，連結國內外高品質鋁合金供應鏈，為各產業提供最堅實的材料後盾。
+        </p>
+    </div>
+</section>
+
+    <!-- 企業簡介與品牌故事 -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="about-story-grid">
+                <div class="about-story-text">
+                    <div class="milestone-badge">
+                        <i class="fas fa-award"></i> 成立於 1996 年 ‧ 專業鋁材服務近 30 年
+                    </div>
+                    <h2>以優質服務與精準技術<br>成為您最值得信賴的合作夥伴</h2>
+                    <p>
+                        <strong>新懋鋁業股份有限公司於 1996 年在台中成立。</strong>
+                        我們深深瞭解顧客滿意的重要性，除了服務大台中地區客戶外，更積極在龜山、竹北、高雄地區設立據點，以在地精神為北部及大高雄地區提供快速優質的供料服務，並持續將範圍擴及全省地區，期望未來更能夠以優質的服務能力及技術供應給全球的客戶。
+                    </p>
+                    <p>
+                        新懋鋁業客戶群已經遍及全省，我們提供客戶精準的鋁合金板加工技術、準確的交貨時程，並於預算內充分滿足客戶需求。
+                    </p>
+                </div>
+                <div>
+                    <img src="images/Taichung.jpg" alt="新懋鋁業廠房" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-hover); border: 1px solid var(--border-color);">
+                </div>
+            </div>
+
+            <!-- 核心經營理念引言框 -->
+            <div class="philosophy-quote-box">
+                <i class="fas fa-quote-left" style="color: var(--primary-color); margin-right: 8px;"></i>
+                財務穩定成長的同時，我們承諾達成全面的客戶滿意、精進加工技術能力、投資更先進的機具設備與人才的培訓。傾聽客戶的聲音，願意並協助客戶成功，以最經濟的成本、最合適的品質，建立彼此牢不可分的夥伴關係——我們深知客戶的成功是新懋鋁業成長的動力。
+            </div>
+        </div>
+    </section>
+
+    <!-- 三大經營承諾 -->
+    <section class="section-padding bg-soft-gray">
+        <div class="container">
+            <div class="section-title-center">
+                <span class="sub-heading">OUR COMMITMENT</span>
+                <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">新懋鋁業的三大堅守</h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>精準加工與準時交期</h3>
+                    <p>憑藉先進的鋸切與銑面設備，提供高精度尺寸加工，並建立極速調撥物流，確保在預算與時間內精準交付。</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>顧客第一 ‧ 創造雙贏</h3>
+                    <p>傾聽客戶的需求，以最經濟的成本、最適的品質協助客戶成功，建立彼此牢不可分的夥伴關係。</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>持續創新與設備升級</h3>
+                    <p>穩定發展的同時，持續投資高階精密機具與專業人才培訓，不斷提升競爭力，朝供應全球客戶的目標邁進。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer-dark">
+        <div class="container footer-copyright">
+            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見問題 | 新懋鋁業股份有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar-glass">
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+            <span class="logo-text">
+                新懋鋁業股份有限公司
+                <span>New-Green Aluminium CO., LTD.</span>
+            </span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">回首頁</a>
+            <a href="about.html" class="nav-item">關於新懋</a>
+            <a href="products.html" class="nav-item">鋁材與加工服務</a>
+            <a href="locations.html" class="nav-item">全台據點地圖</a>
+            <a href="faq.html" class="nav-item">常見問題</a>
+            <a href="quote.html" class="btn-primary-glow">線上詢價</a>
+        </nav>
+    </div>
+</header>
+
+    <section class="page-header-theme">
+        <div class="container">
+            <span class="badge-tech"><i class="fas fa-circle-question"></i> FAQ</span>
+            <h1>常見問題解答</h1>
+            <p>為您解答關於進口產地、材質規格、裁切與銑面加工的疑問。</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container container-narrow">
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>新懋主要銷售哪些產地與材質的鋁材？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>我們穩定引進來自**中鋁、日本、韓國、瑞士**等國家的進口優質鋁材，材質包含常用的 **5052、5083、6061、7075** 等。形狀包含鋁板，以及圓棒、扁條、方條、角鋁等擠型，現貨與規格十分齊全。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>你們提供哪些專業加工服務？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>我們主要提供**「專業鋁板/型材裁切」**與**「精密平面銑面加工」**。您可以直接購買指定尺寸的裁切料，或者要求針對特定平面進行銑削去除公差，方便您直接上線組裝或進一步加工。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>購買裁切材料是否有最小訂購量 (MOQ) 或尺寸限制？</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>不論是少量樣品裁切還是大量生產切割，我們皆可彈性配合。建議填寫線上詢價單上傳需求尺寸，業務團隊會立即為您計算最佳材切排版與報價。</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer-dark">
+        <div class="container footer-copyright">
+            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
