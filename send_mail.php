@@ -1,13 +1,34 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+// 1. 請在此處填入您申請到的 Google reCAPTCHA 「密鑰」(Secret Key)
+$recaptcha_secret = '6LcUrGotAAAAACn1WRoYO02DzigueFZ87FOrHBul';
+
 // 檢查請求方式
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(array('status' => 'error', 'message' => '無效的請求方式'));
     exit;
 }
 
-// 取得前端傳來的表單資料並過濾標籤（防止 XSS 攻擊，相容舊版 PHP/DW）
+// 2. 驗證 Google reCAPTCHA 機器人驗證碼
+$recaptcha_response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
+
+if (empty($recaptcha_response)) {
+    echo json_encode(array('status' => 'error', 'message' => '請先完成「我不是機器人」驗證！'));
+    exit;
+}
+
+// 向 Google 伺服器進行密鑰發送與雙重確認
+$verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+$verify_response = file_get_contents($verify_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+$response_data = json_decode($verify_response);
+
+if (!$response_data || !$response_data->success) {
+    echo json_encode(array('status' => 'error', 'message' => '機器人驗證失敗，請重新勾選後再試！'));
+    exit;
+}
+
+// 3. 取得前端傳來的表單資料並過濾標籤
 $company = isset($_POST['company']) ? filter_var($_POST['company'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
 $contact = isset($_POST['contact']) ? filter_var($_POST['contact'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
 $phone   = isset($_POST['phone'])   ? filter_var($_POST['phone'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
@@ -21,7 +42,7 @@ if (empty($company) || empty($contact) || empty($phone) || !$email || empty($not
 }
 
 // 收件者與郵件內容設定
-$to_email = "service@newgreen.com.tw"; // 請確認替換為貴公司實際收件信箱
+$to_email = "service@newgreen.com.tw"; // 貴公司實際收件信箱
 $subject = "【線上詢價通知】" . $company . " - " . $contact;
 
 $message_body  = "您收到一筆新的線上詢價單：\n\n";
