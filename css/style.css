@@ -752,3 +752,47 @@ body {
 .quote-header-bg p {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
 }
+/* 預設桌機版：隱藏漢堡選單按鈕 */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* 確保按鈕在最上層，不被遮住 */
+}
+
+/* 手機版與平板 (螢幕寬度 768px 以下) */
+@media (max-width: 768px) {
+    /* 顯示漢堡按鈕 */
+    .hamburger {
+        display: block;
+    }
+
+    /* 手機版預設隱藏選單 */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; /* 出現在導覽列正下方 */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+    }
+
+    /* 當 JS 加入 active 類別時，顯示選單 */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+    }
+}
