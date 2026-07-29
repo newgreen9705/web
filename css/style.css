@@ -710,3 +710,45 @@ body {
 .products-header-bg p {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
 }
+/* 全台據點頁主頁頭區塊 (去除背景色，純背景圖) */
+.locations-header-bg {
+    position: relative;
+    /* 完全去除背景顏色與遮罩，只載入圖片 */
+    background: url('../images/locations-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+/* 文字陰影，確保在任何背景圖片上白字都清晰 */
+.locations-header-bg h1,
+.locations-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+/* 常見問題頁主頁頭區塊 (去除背景色，純背景圖) */
+.faq-header-bg {
+    position: relative;
+    /* 完全去除背景顏色與漸層遮罩，只載入圖片 */
+    background: url('../images/faq-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+/* 文字陰影，確保在任何背景圖片上白字都清晰 */
+.faq-header-bg h1,
+.faq-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+/* 線上詢價頁主頁頭區塊 (去除背景色，純背景圖) */
+.quote-header-bg {
+    position: relative;
+    /* 完全去除背景顏色與漸層遮罩，只載入圖片 */
+    background: url('../images/quote-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+/* 文字陰影，確保在任何背景圖片上白字都清晰 */
+.quote-header-bg h1,
+.quote-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
