@@ -796,3 +796,24 @@ body {
         text-align: center;
     }
 }
+/* 電話撥號連結樣式 */
+.phone-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* 在手機版 (768px 以下) 讓電話號碼更醒目、更容易點擊 */
+@media (max-width: 768px) {
+    .phone-link {
+        color: var(--primary-color);
+        padding: 2px 0;
+        display: inline-block;
+    }
+}
