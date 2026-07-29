@@ -3,23 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新懋鋁業股份有限公司 | 各國進口鋁材、專業裁切與銑面加工</title>
+    
+    <!-- 1. SEO 搜尋引擎優化 Meta 標籤 -->
+    <title>新懋鋁業 | 中鋁鋁板、多國進口鋁板供應與專業鋁擠型加工專家</title>
+    <meta name="description" content="新懋鋁業專營中鋁鋁板、進口鋁板（美日韓瑞）、各式鋁擠型（圓棒、方條、角鋁）及 5052、6061、7075 合金。提供全台精密裁切與高規格銑面加工服務，庫存齊全，歡迎線上詢價！">
+    <meta name="keywords" content="新懋鋁業, 中鋁鋁板, 進口鋁板, 鋁擠型, 鋁材加工, 鋁板裁切, 銑面加工, 5052鋁板, 6061鋁板, 7075鋁板, 鋁棒, 角鋁">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.newgreen.com.tw/">
+
+    <!-- 2. 社群分享卡片 (Open Graph) -->
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="新懋鋁業 | 中鋁鋁板、多國進口鋁板供應與專業鋁擠型加工專家">
+    <meta property="og:description" content="專營中鋁鋁板、進口鋁板與各式鋁擠型開發裁切。具備廠內精密裁切與銑面加工能力，提供全台一站式鋁材解決方案。">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://www.newgreen.com.tw/">
+    <meta property="og:site_name" content="新懋鋁業股份有限公司">
+
+    <!-- 3. Google 結構化資料 (JSON-LD) - 幫助搜尋引擎理解公司資訊 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "新懋鋁業股份有限公司",
+      "alternateName": "New-Green Aluminium CO., LTD.",
+      "url": "https://www.newgreen.com.tw/",
+      "logo": "https://www.newgreen.com.tw/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+886-4-23501420",
+        "contactType": "customer service",
+        "areaServed": "TW",
+        "availableLanguage": "Chinese"
+      },
+      "description": "專業供應中鋁鋁板、進口鋁板、鋁擠型產品，並提供精密鋸切與銑面加工服務。"
+    }
+    </script>
+
+    <!-- 字體與樣式表 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header class="navbar-glass">
+<header class="navbar-glass">
     <div class="container nav-wrapper">
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="新懋鋁業 LOGO" class="logo-img">
+            <img src="images/logo.png" alt="新懋鋁業 LOGO - 中鋁鋁板與進口鋁板專業供應商" class="logo-img">
             <span class="logo-text">
                 新懋鋁業股份有限公司
                 <span>New-Green Aluminium CO., LTD.</span>
             </span>
         </a>
-        <nav class="nav-links">
+
+        <!-- 漢堡選單按鈕 -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="切換選單">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
             <a href="index.html" class="nav-item active">回首頁</a>
             <a href="about.html" class="nav-item">關於新懋</a>
             <a href="products.html" class="nav-item">鋁材與加工服務</a>
@@ -30,56 +73,78 @@
     </div>
 </header>
 
-    <!-- Banner -->
-<!-- Banner 主視覺 (載入 images/Taichung.jpg) -->
-<!-- Banner 主視覺 (純圖片背景) -->
-<section class="hero-banner-image">
-    <div class="container">
-        <span class="badge-tech"><i class="fas fa-globe"></i> 全球優質來源 ‧ 專業裁切 ‧ 銑面加工</span>
-        <h1 style="font-size: 42px; margin-top: 15px; line-height: 1.3; font-weight: 700;">
-            全球多國進口鋁材供應<br>精準裁切與高規格銑面加工專家
-        </h1>
-        <p style="max-width: 720px; font-size: 17px; margin-top: 18px; color: #ffffff; line-height: 1.7;">
-            備有中鋁、日本、韓國、瑞士等各國優質鋁板與擠型材（圓棒、扁條、方條、角鋁）。提供齊全合金材質（5052 / 5083 / 6061 / 7075），配合廠內專業裁切與銑面加工，滿足一次購足的需求。
-        </p>
-    </div>
-</section>
+<main>
+    <!-- Banner 主視覺 -->
+    <section class="hero-banner-image">
+        <div class="container">
+            <span class="badge-tech"><i class="fas fa-globe"></i> 中鋁與全球進口來源 ‧ 精密裁切 ‧ 銑面加工</span>
+            <h1 style="font-size: 40px; margin-top: 15px; line-height: 1.3; font-weight: 700;">
+                中鋁鋁板與進口鋁板指定供應商<br>客製化鋁擠型、精密裁切與銑面加工專家
+            </h1>
+            <p style="max-width: 760px; font-size: 17px; margin-top: 18px; color: #ffffff; line-height: 1.7;">
+                新懋鋁業專營<strong>中鋁鋁板</strong>與日本、韓國、瑞士等高品質<strong>進口鋁板</strong>，並備有齊全<strong>鋁擠型</strong>（圓棒、扁條、方條、角鋁）。全面涵蓋 5052、5083、6061、7075 等合金材質，搭配廠內<strong>精密裁切</strong>與高規格<strong>銑面加工</strong>，為您提供一次購足的高效率材料解答。
+            </p>
+        </div>
+    </section>
 
-    <!-- 核心優勢三大柱 -->
+    <!-- 核心優勢與營業項目四大柱 -->
     <section class="section-padding bg-soft-gray">
         <div class="container">
             <div class="section-title-center">
-                <span class="sub-heading">CORE SERVICES</span>
-                <h2>新懋鋁業的核心優勢</h2>
+                <span class="sub-heading">OUR SERVICES</span>
+                <h2>新懋鋁業的核心服務與優勢項目</h2>
             </div>
 
-            <div class="grid-3-products">
+            <div class="grid-3-products" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
                 <div class="product-card-modern" style="padding: 30px;">
-                    <i class="fas fa-earth-asia" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3>多國進口與多元規格</h3>
-                    <p>代理與現貨供應中鋁、日本、韓國、瑞士等廠牌。包含 5052、5083、6061、7075 等豐富材質之鋁板與各式擠型。</p>
+                    <i class="fas fa-layer-group" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3>中鋁與多國進口鋁板</h3>
+                    <p>現貨供應<strong>中鋁鋁板</strong>及日、韓、歐美優質進口鋁板，材質包含 5052、5083、6061、7075 等，平整度高、品質穩定。</p>
                 </div>
+                
+                <div class="product-card-modern" style="padding: 30px;">
+                    <i class="fas fa-cubes" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3>各式工業鋁擠型材</h3>
+                    <p>提供多樣化<strong>鋁擠型</strong>產品，包含鋁圓棒、扁條、方條、角鋁與結構型材，滿足自動化設備與工業機構設計需求。</p>
+                </div>
+
                 <div class="product-card-modern" style="padding: 30px; border-color: var(--primary-color);">
                     <i class="fas fa-scissors" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3>專業鋁板擠型裁切</h3>
-                    <p>配置專業裁切設備，可依客戶指定之尺寸進行精密定尺鋸切，斷面平整、尺寸公差精準，提升後續加工效率。</p>
+                    <h3>精密鋁板與擠型裁切</h3>
+                    <p>配置專業鋸切設備，提供精準尺寸公差與平整斷面的<strong>鋁材裁切</strong>服務，減少客戶二次加工時間與損耗。</p>
                 </div>
+
                 <div class="product-card-modern" style="padding: 30px;">
                     <i class="fas fa-object-group" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3>精密銑面加工服務</h3>
-                    <p>針對鋁板與型材提供平面銑削去除公差，確保極佳的平面度與表面接觸品質，適合高品質組裝貼合。</p>
+                    <h3>高品質銑面加工服務</h3>
+                    <p>針對鋁板與型材提供客製化<strong>銑面加工</strong>，精密去公差與提升平面度，確保絕佳的表面接觸品質與組裝精度。</p>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
-    <footer class="footer-dark">
-        <div class="container footer-grid">
+<!-- Footer 頁尾優勢與 SEO 關鍵字延伸 -->
+<footer class="footer-dark">
+    <div class="container">
+        <!-- SEO 關鍵字連結引導條 -->
+<div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-size: 0.9rem; color: #a1a1aa; text-align: center;">
+            <strong style="color: #ffffff;">熱門產品服務：</strong>
+            <span>中鋁鋁板</span> ｜ 
+            <span>各國進口鋁板</span> ｜ 
+            <span>工業鋁擠型</span> ｜ 
+            <span>鋁棒/角鋁/扁條</span> ｜ 
+            <span>鋁材精密裁切</span> ｜ 
+            <span>銑面加工</span>
+        </div>
+
+        <div class="footer-grid">
             <div class="footer-brand">
                 <h3>新懋鋁業股份有限公司</h3>
                 <p>New-Green Aluminium CO., LTD.</p>
                 <p><i class="fas fa-phone"></i> 04-23501420</p>
                 <p><i class="fas fa-envelope"></i> newgreen_co@newgreen.com.tw</p>
+                <p><i class="fas fa-location-dot"></i> 專業中鋁鋁板、進口鋁板、鋁擠型與加工服務全台供應</p>
             </div>
             <div class="footer-nav">
                 <h4>網站導覽</h4>
@@ -101,6 +166,29 @@
         <div class="footer-copyright">
             <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
         </div>
-    </footer>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+
+            const icon = hamburgerBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>

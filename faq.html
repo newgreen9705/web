@@ -19,12 +19,19 @@
                 <span>New-Green Aluminium CO., LTD.</span>
             </span>
         </a>
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item active">回首頁</a>
+
+        <!-- 新增漢堡選單按鈕 -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="切換選單">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 加上 id="navLinks" 方便 JS 操控 -->
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-item">回首頁</a>
             <a href="about.html" class="nav-item">關於新懋</a>
             <a href="products.html" class="nav-item">鋁材與加工服務</a>
             <a href="locations.html" class="nav-item">全台據點地圖</a>
-            <a href="faq.html" class="nav-item">常見問題</a>
+            <a href="faq.html" class="nav-item active">常見問題</a>
             <a href="quote.html" class="btn-primary-glow">線上詢價</a>
         </nav>
     </div>
@@ -89,5 +96,28 @@
             });
         }
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', function() {
+            // 切換選單顯示/隱藏
+            navLinks.classList.toggle('active');
+
+            // 切換圖示 (三條線 ⇄ X 關閉圖示)
+            const icon = hamburgerBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>
