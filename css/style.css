@@ -113,7 +113,7 @@ body {
     font-weight: 600;
 }
 
-/* 發光線上詢價按鈕 */
+/* 發光我要詢價按鈕 */
 .btn-primary-glow {
     background: var(--primary-color);
     color: #ffffff !important;
@@ -506,7 +506,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   6. 常見問題 (FAQ) & 線上詢價單 (Quote Form)
+   6. 常見問題 (FAQ) & 我要詢價單 (Quote Form)
    -------------------------------------------------------------------------- */
 .faq-item { 
     background: #ffffff; 
@@ -738,7 +738,7 @@ body {
 .faq-header-bg p {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
 }
-/* 線上詢價頁主頁頭區塊 (去除背景色，純背景圖) */
+/* 我要詢價頁主頁頭區塊 (去除背景色，純背景圖) */
 .quote-header-bg {
     position: relative;
     /* 完全去除背景顏色與漸層遮罩，只載入圖片 */
