@@ -6,7 +6,7 @@
     
     <!-- 1. SEO 搜尋引擎優化 Meta 標籤 -->
     <title>新懋鋁業 | 中鋁鋁板、多國進口鋁板供應與專業鋁擠型加工專家</title>
-    <meta name="description" content="新懋鋁業專營中鋁鋁板、進口鋁板（美日韓瑞）、各式鋁擠型（圓棒、方條、角鋁）及 2024、5052、5083、6061、7075 合金。提供全台精密裁切與高規格銑面加工服務，庫存齊全，歡迎線上詢價！">
+    <meta name="description" content="新懋鋁業專營中鋁鋁板、進口鋁板（美日韓瑞）、各式鋁擠型（圓棒、方條、角鋁）及 2024、5052、5083、6061、7075 鋁合金。提供全台精密裁切與高規格銑面加工服務，庫存齊全，歡迎線上詢價！">
     <meta name="keywords" content="新懋鋁業, 中鋁鋁板, 進口鋁板, 鋁擠型, 鋁材加工, 鋁板裁切, 銑面加工, 2024鋁板, 5052鋁板, 5083鋁板、 6061鋁板, 7075鋁板, 鋁棒, 角鋁, 鋁扁條, 鋁方條">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.newgreen.com.tw/">
@@ -182,9 +182,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
+                // 新增：選單開啟時，禁止背景頁面滾動
+                document.body.style.overflow = 'hidden';
             } else {
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
+                // 新增：選單關閉時，恢復背景頁面滾動
+                document.body.style.overflow = 'auto';
             }
         });
     }

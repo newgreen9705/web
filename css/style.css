@@ -76,7 +76,7 @@ body {
 }
 
 .logo-img {
-    height: 42px;
+    height: 60px;
     width: auto;
     object-fit: contain;
 }
@@ -649,17 +649,23 @@ body {
 }
 
 @media (max-width: 768px) {
-    .nav-links { 
-        display: none; 
-    }
-    .form-grid-2 { 
-        grid-template-columns: 1fr; 
-    }
-    .logo-text span { 
-        font-size: 11px; 
-    }
-    .hero-banner-image {
-        padding: 60px 0;
+    /* 選單樣式優化 */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--border-color);
+        z-index: 1001;
+
+        /* 新增：限制最大高度並開啟 Y 軸自動滾動，避免選項超出螢幕被裁切 */
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 }
 
@@ -811,9 +817,31 @@ body {
 
 /* 在手機版 (768px 以下) 讓電話號碼更醒目、更容易點擊 */
 @media (max-width: 768px) {
+    /* 1. 選單內的連結點擊區域放大 */
+    .nav-links .nav-item {
+        padding: 14px 20px; /* 原本 12px 上下間距加高到 14px */
+        font-size: 16px;    /* 適度加深字體尺寸 */
+        display: block;
+    }
+
+    /* 2. 頁尾 (Footer) 連結在手機版加大觸控面積 */
+    .footer-nav li {
+        margin-bottom: 0;   /* 移除原 margin，改用 padding 讓整個範圍可點擊 */
+    }
+
+    .footer-nav a {
+        display: block;
+        padding: 10px 0;    /* 增加上下 10px 的可點擊觸控空間 */
+        font-size: 15px;
+    }
+
+    /* 3. 頁尾電話與 Email 點擊面積加大 */
+    .footer-brand p {
+        padding: 6px 0;     /* 加大行間距，防止誤觸鄰近行 */
+    }
+
     .phone-link {
-        color: var(--primary-color);
-        padding: 2px 0;
+        padding: 6px 0;
         display: inline-block;
     }
 }
