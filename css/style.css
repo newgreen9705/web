@@ -7,9 +7,9 @@
    1. 變數與基礎設定 (Variables & Reset)
    -------------------------------------------------------------------------- */
 :root {
-    --primary-color: #0284c7;       /* 科技鋁藍 */
+    --primary-color: #0284c7;        /* 科技鋁藍 */
     --primary-hover: #0369a1;
-    --dark-bg: #0f172a;              /* 深藍灰色 */
+    --dark-bg: #0f172a;               /* 深藍灰色 */
     --light-bg: #f8fafc;
     --border-color: #e2e8f0;
     --text-main: #334155;
@@ -357,7 +357,6 @@ body {
     font-weight: 700;
 }
 
-
 .product-desc,
 .product-body p {
     font-size: 14px;
@@ -454,13 +453,20 @@ body {
 /* --------------------------------------------------------------------------
    5. 全台據點地圖與圖片輪播 (Locations Page Styles)
    -------------------------------------------------------------------------- */
-/* 據點頂部圖片輪播容器 */
+/* 預設通用圖片輪播容器 (適用於 products.html 等主要頁面) */
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 680px; /* PC 端高度拉高至 680px，減少上下過度裁切 */
+    height: 600px; /* 通用預設高度：680px */
     overflow: hidden;
     background-color: #0f172a;
+}
+
+/* ==========================================================================
+   locations.html 專用輪播高度微調 (完美調降高度，不影響 products.html)
+   ========================================================================== */
+.carousel-container.carousel-locations {
+    height: 600px; /* PC 端據點頁降為 420px */
 }
 
 .carousel-slide {
@@ -529,6 +535,7 @@ body {
     width: 12px;
     height: 12px;
     background: rgba(255, 255, 255, 0.5);
+    border: none;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -790,7 +797,10 @@ body {
    -------------------------------------------------------------------------- */
 @media (max-width: 1200px) {
     .carousel-container {
-        height: 520px; /* 中大型筆電螢幕適當微調 */
+        height: 520px; /* products.html 等通用頁面微調 */
+    }
+    .carousel-container.carousel-locations {
+        height: 380px; /* locations.html 降高版微調 */
     }
 }
 
@@ -806,7 +816,10 @@ body {
         grid-template-columns: 1fr; 
     }
     .carousel-container {
-        height: 420px; /* 平板電腦高比例調整 */
+        height: 420px;
+    }
+    .carousel-container.carousel-locations {
+        height: 320px;
     }
 }
 
@@ -861,11 +874,18 @@ body {
         padding: 6px 0;
         display: inline-block;
     }
+
+    .carousel-container.carousel-locations {
+        height: 280px;
+    }
 }
 
 @media (max-width: 576px) {
     .carousel-container {
-        height: 280px; /* 小手機邊界適應 */
+        height: 280px;
+    }
+    .carousel-container.carousel-locations {
+        height: 220px;
     }
     .carousel-btn {
         width: 36px;
