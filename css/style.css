@@ -52,9 +52,9 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #ffffff;                                /* 背景改為純白色 */
-    border-bottom: 1px solid var(--border-color);       /* 淺灰色底邊框 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);          /* 質感微陰影 */
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 12px 0;
 }
 
@@ -64,13 +64,12 @@ body {
     align-items: center;
 }
 
-/* LOGO 區域（圖片 + 中英公司全銜） */
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: var(--dark-bg);          /* 中文全銜深色 */
+    color: var(--dark-bg);
     font-weight: 700;
     font-size: 18px;
 }
@@ -86,14 +85,13 @@ body {
 }
 
 .logo-text span {
-    color: var(--primary-color);      /* 英文全銜科技藍 */
+    color: var(--primary-color);
     font-size: 12px;
     font-weight: 400;
     display: block;
     letter-spacing: 0.5px;
 }
 
-/* 選項連結 */
 .nav-links {
     display: flex;
     align-items: center;
@@ -101,7 +99,7 @@ body {
 }
 
 .nav-item {
-    color: var(--text-main);          /* 文字改為深色 */
+    color: var(--text-main);
     text-decoration: none;
     font-size: 15px;
     transition: color 0.2s ease;
@@ -109,11 +107,10 @@ body {
 
 .nav-item:hover, 
 .nav-item.active {
-    color: var(--primary-color);      /* Hover與當前頁改為科技藍 */
+    color: var(--primary-color);
     font-weight: 600;
 }
 
-/* 發光我要詢價按鈕 */
 .btn-primary-glow {
     background: var(--primary-color);
     color: #ffffff !important;
@@ -131,22 +128,32 @@ body {
     box-shadow: 0 0 25px rgba(2, 132, 199, 0.6);
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
 /* --------------------------------------------------------------------------
-   3. 主視覺 Banner 與頁頭 Theme (背景載入 images/Taichung.jpg)
+   3. 主視覺 Banner 與頁頭 Theme
    -------------------------------------------------------------------------- */
 .hero-banner-image {
     position: relative;
-    /* 移除 linear-gradient 遮罩，只保留 images/Taichung.jpg 背景圖 */
     background: url('../images/Taichung.jpg') center/cover no-repeat;
     color: #ffffff;
     padding: 100px 0;
 }
 
-/* 加上微小文字陰影，確保純圖背景下白字依舊醒目清晰 */
 .hero-banner-image h1,
 .hero-banner-image p {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
+
 .page-header-theme {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: #ffffff;
@@ -185,6 +192,67 @@ body {
     letter-spacing: 2px; 
 }
 
+/* 各頁面背景 Banner 樣式 */
+.about-global-bg {
+    position: relative;
+    background: url('../images/global-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+.about-global-bg h1,
+.about-global-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.products-header-bg {
+    position: relative;
+    background: url('../images/products-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+.products-header-bg h1,
+.products-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.locations-header-bg {
+    position: relative;
+    background: url('../images/locations-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+.locations-header-bg h1,
+.locations-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.faq-header-bg {
+    position: relative;
+    background: url('../images/faq-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+.faq-header-bg h1,
+.faq-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.quote-header-bg {
+    position: relative;
+    background: url('../images/quote-header-bg.jpg') center/cover no-repeat;
+    color: #ffffff;
+    padding: 80px 0;
+}
+
+.quote-header-bg h1,
+.quote-header-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
 /* 通用按鈕 */
 .btn-modern-primary {
     display: inline-block;
@@ -220,13 +288,7 @@ body {
 /* --------------------------------------------------------------------------
    4. 產品與加工服務卡片 (Products & Processing Cards)
    -------------------------------------------------------------------------- */
-.grid-3-products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-/* 新增：產品頁面現代網格與圖片卡片樣式 */
+.grid-3-products,
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -287,14 +349,17 @@ body {
     flex-grow: 1;
 }
 
-.product-content h3 {
+.product-content h3,
+.product-body h3 {
     font-size: 20px;
     color: var(--dark-bg);
     margin-bottom: 10px;
     font-weight: 700;
 }
 
-.product-desc {
+
+.product-desc,
+.product-body p {
     font-size: 14px;
     color: var(--text-muted);
     line-height: 1.6;
@@ -339,17 +404,6 @@ body {
     padding: 24px; 
 }
 
-.product-body h3 { 
-    font-size: 20px; 
-    margin-bottom: 10px; 
-    color: var(--dark-bg); 
-}
-
-.product-body p { 
-    font-size: 14px; 
-    color: var(--text-muted); 
-}
-
 .tech-spec-tag {
     display: inline-block;
     background: #e0f2fe;
@@ -371,7 +425,6 @@ body {
     margin-left: 6px;
 }
 
-/* 分類篩選按鈕 */
 .filter-tabs {
     display: flex;
     justify-content: center;
@@ -399,8 +452,96 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   5. 全台據點地圖卡片 (Locations Page Styles)
+   5. 全台據點地圖與圖片輪播 (Locations Page Styles)
    -------------------------------------------------------------------------- */
+/* 據點頂部圖片輪播容器 */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 680px; /* PC 端高度拉高至 680px，減少上下過度裁切 */
+    overflow: hidden;
+    background-color: #0f172a;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* 確保廠區照片核心置中 */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+}
+
+.carousel-btn.prev { left: 25px; }
+.carousel-btn.next { right: 25px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dot.active, .dot:hover {
+    background: var(--primary-color);
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* 據點卡片網格 */
 .locations-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -503,6 +644,18 @@ body {
 .map-container iframe {
     width: 100% !important;
     height: 100% !important;
+}
+
+.phone-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------
@@ -633,8 +786,14 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   8. 響應式排版 (Responsive Web Design)
+   8. 響應式排版 (Responsive Web Design Breakpoints)
    -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .carousel-container {
+        height: 520px; /* 中大型筆電螢幕適當微調 */
+    }
+}
+
 @media (max-width: 992px) {
     .grid-3-products,
     .product-grid { 
@@ -646,10 +805,16 @@ body {
     .footer-grid { 
         grid-template-columns: 1fr; 
     }
+    .carousel-container {
+        height: 420px; /* 平板電腦高比例調整 */
+    }
 }
 
 @media (max-width: 768px) {
-    /* 選單樣式優化 */
+    .hamburger {
+        display: block;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -662,11 +827,53 @@ body {
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         border-top: 1px solid var(--border-color);
         z-index: 1001;
-
-        /* 新增：限制最大高度並開啟 Y 軸自動滾動，避免選項超出螢幕被裁切 */
         max-height: calc(100vh - 70px);
         overflow-y: auto;
     }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links .nav-item {
+        padding: 14px 20px;
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-nav li {
+        margin-bottom: 0;
+    }
+
+    .footer-nav a {
+        display: block;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+
+    .footer-brand p {
+        padding: 6px 0;
+    }
+
+    .phone-link {
+        padding: 6px 0;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-container {
+        height: 280px; /* 小手機邊界適應 */
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
 }
 
 @media (max-width: 480px) {
@@ -685,164 +892,5 @@ body {
     }
     .qr-code-box img { 
         width: 80px; 
-    }
-}
-/* 關於我們 - 深耕在地邁向全球背景區塊 */
-/* 關於我們 - 深耕在地邁向全球區塊 (純背景圖無遮罩) */
-.about-global-bg {
-    position: relative;
-    /* 移除 linear-gradient 遮罩，只保留背景圖 */
-    background: url('../images/global-bg.jpg') center/cover no-repeat;
-    color: #ffffff;
-    padding: 80px 0;
-}
-
-/* 加上文字陰影，確保在純背景圖下白字依然清晰可讀 */
-.about-global-bg h1,
-.about-global-bg p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
-}
-/* 產品頁主頁頭區塊 (去除背景色，純背景圖) */
-.products-header-bg {
-    position: relative;
-    /* 完全去除背景顏色/漸層遮罩，只載入圖片 */
-    background: url('../images/products-header-bg.jpg') center/cover no-repeat;
-    color: #ffffff;
-    padding: 80px 0;
-}
-
-/* 加上文字陰影，確保在任何背景圖片上文字依舊清晰可見 */
-.products-header-bg h1,
-.products-header-bg p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
-}
-/* 全台據點頁主頁頭區塊 (去除背景色，純背景圖) */
-.locations-header-bg {
-    position: relative;
-    /* 完全去除背景顏色與遮罩，只載入圖片 */
-    background: url('../images/locations-header-bg.jpg') center/cover no-repeat;
-    color: #ffffff;
-    padding: 80px 0;
-}
-
-/* 文字陰影，確保在任何背景圖片上白字都清晰 */
-.locations-header-bg h1,
-.locations-header-bg p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
-}
-
-/* 常見問題頁主頁頭區塊 (去除背景色，純背景圖) */
-.faq-header-bg {
-    position: relative;
-    /* 完全去除背景顏色與漸層遮罩，只載入圖片 */
-    background: url('../images/faq-header-bg.jpg') center/cover no-repeat;
-    color: #ffffff;
-    padding: 80px 0;
-}
-
-/* 文字陰影，確保在任何背景圖片上白字都清晰 */
-.faq-header-bg h1,
-.faq-header-bg p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
-}
-/* 我要詢價頁主頁頭區塊 (去除背景色，純背景圖) */
-.quote-header-bg {
-    position: relative;
-    /* 完全去除背景顏色與漸層遮罩，只載入圖片 */
-    background: url('../images/quote-header-bg.jpg') center/cover no-repeat;
-    color: #ffffff;
-    padding: 80px 0;
-}
-
-/* 文字陰影，確保在任何背景圖片上白字都清晰 */
-.quote-header-bg h1,
-.quote-header-bg p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
-}
-/* 預設桌機版：隱藏漢堡選單按鈕 */
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #333;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001; /* 確保按鈕在最上層，不被遮住 */
-}
-
-/* 手機版與平板 (螢幕寬度 768px 以下) */
-@media (max-width: 768px) {
-    /* 顯示漢堡按鈕 */
-    .hamburger {
-        display: block;
-    }
-
-    /* 手機版預設隱藏選單 */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%; /* 出現在導覽列正下方 */
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        flex-direction: column;
-        padding: 20px 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-    }
-
-    /* 當 JS 加入 active 類別時，顯示選單 */
-    .nav-links.active {
-        display: flex !important;
-    }
-
-    .nav-links a {
-        padding: 12px 20px;
-        width: 100%;
-        text-align: center;
-    }
-}
-/* 電話撥號連結樣式 */
-.phone-link {
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-.phone-link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-/* 在手機版 (768px 以下) 讓電話號碼更醒目、更容易點擊 */
-@media (max-width: 768px) {
-    /* 1. 選單內的連結點擊區域放大 */
-    .nav-links .nav-item {
-        padding: 14px 20px; /* 原本 12px 上下間距加高到 14px */
-        font-size: 16px;    /* 適度加深字體尺寸 */
-        display: block;
-    }
-
-    /* 2. 頁尾 (Footer) 連結在手機版加大觸控面積 */
-    .footer-nav li {
-        margin-bottom: 0;   /* 移除原 margin，改用 padding 讓整個範圍可點擊 */
-    }
-
-    .footer-nav a {
-        display: block;
-        padding: 10px 0;    /* 增加上下 10px 的可點擊觸控空間 */
-        font-size: 15px;
-    }
-
-    /* 3. 頁尾電話與 Email 點擊面積加大 */
-    .footer-brand p {
-        padding: 6px 0;     /* 加大行間距，防止誤觸鄰近行 */
-    }
-
-    .phone-link {
-        padding: 6px 0;
-        display: inline-block;
     }
 }

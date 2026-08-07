@@ -8,6 +8,96 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* 最上方據點圖片輪播樣式 */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 680px; /* PC端高度拉高至 680px */
+            overflow: hidden;
+            background-color: #0f172a;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 左右切換按鈕 */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-color, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+        }
+
+        .carousel-btn.prev { left: 25px; }
+        .carousel-btn.next { right: 25px; }
+
+        /* 分頁指示點 (居中) */
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .dot.active, .dot:hover {
+            background: var(--primary-color, #0284c7);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* 原有據點地圖與卡片樣式 */
         .locations-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -112,8 +202,21 @@
             height: 100% !important;
         }
 
+        /* 響應式斷點設定 */
+        @media (max-width: 1200px) {
+            .carousel-container { height: 520px; }
+        }
+
         @media (max-width: 992px) {
             .locations-grid { grid-template-columns: 1fr; }
+            .carousel-container { height: 420px; }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-container { height: 280px; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 14px; }
+            .carousel-btn.prev { left: 10px; }
+            .carousel-btn.next { right: 10px; }
         }
 
         @media (max-width: 480px) {
@@ -135,12 +238,11 @@
             </span>
         </a>
 
-        <!-- 新增漢堡選單按鈕 -->
+        <!-- 漢堡選單按鈕 -->
         <button class="hamburger" id="hamburgerBtn" aria-label="切換選單">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- 加上 id="navLinks" 方便 JS 操控 -->
         <nav class="nav-links" id="navLinks">
             <a href="index.html" class="nav-item">回首頁</a>
             <a href="about.html" class="nav-item">關於新懋</a>
@@ -152,145 +254,170 @@
     </div>
 </header>
 
-<section class="locations-header-bg">
-        <div class="container">
-            <span class="badge-tech"><i class="fas fa-map-marked-alt"></i> OUR LOCATIONS</span>
-            <h1 style="font-size: 36px; margin-top: 10px; font-weight: 700;">全台服務據點</h1>
-            <p style="color: #ffffff; font-size: 16px; margin-top: 8px;">北、中、南四大專業廠區，結合在地物流與加工服務，即時響應您的材料需求。</p>
-        </div>
-    </section>
+<!-- 最上方 4 大據點圖片輪播區塊 (高 680px) -->
+<section class="carousel-container" id="locationCarousel">
+    <!-- 台中廠 -->
+    <div class="carousel-slide active">
+        <img src="images/Taichung.jpg" alt="新懋鋁業 台中總公司">
+    </div>
+    <!-- 龜山廠 -->
+    <div class="carousel-slide">
+        <img src="images/Guishan.jpg" alt="新懋鋁業 龜山廠">
+    </div>
+    <!-- 竹北廠 -->
+    <div class="carousel-slide">
+        <img src="images/Jhubei.JPG" alt="新懋鋁業 竹北廠">
+    </div>
+    <!-- 高雄廠 -->
+    <div class="carousel-slide">
+        <img src="images/Kaohsiung.jpg" alt="新懋鋁業 高雄廠">
+    </div>
 
-    <section class="section-padding">
-        <div class="container">
-            
-            <div class="locations-grid">
+    <!-- 左右切換按鈕 -->
+    <button class="carousel-btn prev" id="prevBtn" aria-label="上一張圖片"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-btn next" id="nextBtn" aria-label="下一張圖片"><i class="fas fa-chevron-right"></i></button>
 
-                <!-- 台中廠 -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <div class="location-title">
-                            <i class="fas fa-industry"></i> 台中廠 (總公司)
-                        </div>
-                        <span class="tech-spec-tag">中部營運據點</span>
+    <!-- 分頁指示點 (居中) -->
+    <div class="carousel-dots" id="carouselDots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
+    </div>
+</section>
+
+<!-- 全台據點內容區 -->
+<section class="section-padding">
+    <div class="container">
+        
+        <div class="locations-grid">
+
+            <!-- 台中廠 -->
+            <div class="location-card">
+                <div class="location-header">
+                    <div class="location-title">
+                        <i class="fas fa-industry"></i> 台中廠 (總公司)
                     </div>
-                    <div class="location-body">
-                        <div class="location-info">
-                            <p><i class="fas fa-location-dot"></i> <span>台中市南屯區工業區二十五路19號</span></p>
-                            <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:0423501420" class="phone-link">04-23501420</a></span></p>
-                            <p><i class="fas fa-fax"></i> <span>FAX: 04-23501418</span></p>
-                        </div>
-                        <div class="qr-code-box">
-                            <a href="https://line.me/R/ti/p/gAhFEjsseb" target="_blank" title="點擊加入台中廠 LINE">
-                                <img src="QR/TaichungQR.png" alt="台中廠 LINE QR Code">
-                            </a>
-                            <span>官方 LINE 諮詢</span>
-                        </div>
+                    <span class="tech-spec-tag">中部營運據點</span>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> <span>台中市南屯區工業區二十五路19號</span></p>
+                        <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:0423501420" class="phone-link">04-23501420</a></span></p>
+                        <p><i class="fas fa-fax"></i> <span>FAX: 04-23501418</span></p>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d541.1300709115751!2d120.60199841471852!3d24.1620972445889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e147dc0f037%3A0xa9d91421854a9f1!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213184879!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="qr-code-box">
+                        <a href="https://line.me/R/ti/p/gAhFEjsseb" target="_blank" title="點擊加入台中廠 LINE">
+                            <img src="QR/TaichungQR.png" alt="台中廠 LINE QR Code">
+                        </a>
+                        <span>官方 LINE 諮詢</span>
                     </div>
                 </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d541.1300709115751!2d120.60199841471852!3d24.1620972445889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e147dc0f037%3A0xa9d91421854a9f1!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213184879!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
 
-                <!-- 龜山廠 -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <div class="location-title">
-                            <i class="fas fa-industry"></i> 龜山廠
-                        </div>
-                        <span class="tech-spec-tag">北部營運據點</span>
+            <!-- 龜山廠 -->
+            <div class="location-card">
+                <div class="location-header">
+                    <div class="location-title">
+                        <i class="fas fa-industry"></i> 龜山廠
                     </div>
-                    <div class="location-body">
-                        <div class="location-info">
-                            <p><i class="fas fa-location-dot"></i> <span>桃園市龜山區茶專路38號</span></p>
-                            <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:033185459" class="phone-link">03-3185459</a></span></p>
-                            <p><i class="fas fa-fax"></i> <span>FAX: 03-3185458</span></p>
-                        </div>
-                        <div class="qr-code-box">
-                            <a href="https://line.me/R/ti/p/XBpvS7LMkl" target="_blank" title="點擊加入龜山廠 LINE">
-                                <img src="QR/GuishanQR.png" alt="龜山廠 LINE QR Code">
-                            </a>
-                            <span>官方 LINE 諮詢</span>
-                        </div>
+                    <span class="tech-spec-tag">北部營運據點</span>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> <span>桃園市龜山區茶專路38號</span></p>
+                        <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:033185459" class="phone-link">03-3185459</a></span></p>
+                        <p><i class="fas fa-fax"></i> <span>FAX: 03-3185458</span></p>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.00471655128825!2d121.35749858932957!3d24.99755156492316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681d0002e32731%3A0xecd5b89a245b841b!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213297306!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="qr-code-box">
+                        <a href="https://line.me/R/ti/p/XBpvS7LMkl" target="_blank" title="點擊加入龜山廠 LINE">
+                            <img src="QR/GuishanQR.png" alt="龜山廠 LINE QR Code">
+                        </a>
+                        <span>官方 LINE 諮詢</span>
                     </div>
                 </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.00471655128825!2d121.35749858932957!3d24.99755156492316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681d0002e32731%3A0xecd5b89a245b841b!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213297306!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
 
-                <!-- 竹北廠 -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <div class="location-title">
-                            <i class="fas fa-industry"></i> 竹北廠
-                        </div>
-                        <span class="tech-spec-tag">竹苗營運據點</span>
+            <!-- 竹北廠 -->
+            <div class="location-card">
+                <div class="location-header">
+                    <div class="location-title">
+                        <i class="fas fa-industry"></i> 竹北廠
                     </div>
-                    <div class="location-body">
-                        <div class="location-info">
-                            <p><i class="fas fa-location-dot"></i> <span>新竹縣竹北市長青路一段130號</span></p>
-                            <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:035566990" class="phone-link">03-5566990</a></span></p>
-                            <p><i class="fas fa-fax"></i> <span>FAX: 03-5565907</span></p>
-                        </div>
-                        <div class="qr-code-box">
-                            <a href="https://line.me/R/ti/p/aOJr0dWdhn" target="_blank" title="點擊加入竹北廠 LINE">
-                                <img src="QR/JhubeiQR.png" alt="竹北廠 LINE QR Code">
-                            </a>
-                            <span>官方 LINE 諮詢</span>
-                        </div>
+                    <span class="tech-spec-tag">竹苗營運據點</span>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> <span>新竹縣竹北市長青路一段130號</span></p>
+                        <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:035566990" class="phone-link">03-5566990</a></span></p>
+                        <p><i class="fas fa-fax"></i> <span>FAX: 03-5565907</span></p>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.28494560944563!2d120.956349633615!3d24.844746211491056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34683443a13f6535%3A0x9491f6939506903e!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213273802!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="qr-code-box">
+                        <a href="https://line.me/R/ti/p/aOJr0dWdhn" target="_blank" title="點擊加入竹北廠 LINE">
+                            <img src="QR/JhubeiQR.png" alt="竹北廠 LINE QR Code">
+                        </a>
+                        <span>官方 LINE 諮詢</span>
                     </div>
                 </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.28494560944563!2d120.956349633615!3d24.844746211491056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34683443a13f6535%3A0x9491f6939506903e!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213273802!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
 
-                <!-- 高雄廠 -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <div class="location-title">
-                            <i class="fas fa-industry"></i> 高雄廠
-                        </div>
-                        <span class="tech-spec-tag">南部營運據點</span>
+            <!-- 高雄廠 -->
+            <div class="location-card">
+                <div class="location-header">
+                    <div class="location-title">
+                        <i class="fas fa-industry"></i> 高雄廠
                     </div>
-                    <div class="location-body">
-                        <div class="location-info">
-                            <p><i class="fas fa-location-dot"></i> <span>高雄市大寮區和業六路二號</span></p>
-                            <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:077880560" class="phone-link">07-7880560</a></span></p>
-                            <p><i class="fas fa-fax"></i> <span>FAX: 07-7880121</span></p>
-                        </div>
-                        <div class="qr-code-box">
-                            <a href="https://line.me/R/ti/p/aNuIEkEQhv" target="_blank" title="點擊加入高雄廠 LINE">
-                                <img src="QR/KaohsiungQR.png" alt="高雄廠 LINE QR Code">
-                            </a>
-                            <span>官方 LINE 諮詢</span>
-                        </div>
+                    <span class="tech-spec-tag">南部營運據點</span>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> <span>高雄市大寮區和業六路2號</span></p>
+                        <p><i class="fas fa-phone"></i> <span>TEL: <a href="tel:077880560" class="phone-link">07-7880560</a></span></p>
+                        <p><i class="fas fa-fax"></i> <span>FAX: 07-7880121</span></p>
                     </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.496648728756!2d120.4301197315809!3d22.61260041483241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e1b480d9cc3a7%3A0x456e90e3068999b0!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213248834!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="qr-code-box">
+                        <a href="https://line.me/R/ti/p/aNuIEkEQhv" target="_blank" title="點擊加入高雄廠 LINE">
+                            <img src="QR/KaohsiungQR.png" alt="高雄廠 LINE QR Code">
+                        </a>
+                        <span>官方 LINE 諮詢</span>
                     </div>
                 </div>
-
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d547.496648728756!2d120.4301197315809!3d22.61260041483241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e1b480d9cc3a7%3A0x456e90e3068999b0!2z5paw5oeL6YuB5qWt6IKh5Lu95pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1785213248834!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
             </div>
 
         </div>
-    </section>
 
-    <footer class="footer-dark">
-        <div class="container footer-copyright">
-            <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script>
+    </div>
+</section>
+
+<footer class="footer-dark">
+    <div class="container footer-copyright">
+        <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navLinks = document.getElementById('navLinks');
+    // 1. 漢堡選單控制
+    var hamburgerBtn = document.getElementById('hamburgerBtn');
+    var navLinks = document.getElementById('navLinks');
 
     if (hamburgerBtn && navLinks) {
         hamburgerBtn.addEventListener('click', function() {
-            // 切換選單顯示/隱藏
             navLinks.classList.toggle('active');
 
-            // 切換圖示 (三條線 ⇄ X 關閉圖示)
-            const icon = hamburgerBtn.querySelector('i');
+            var icon = hamburgerBtn.querySelector('i');
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
@@ -299,6 +426,71 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.add('fa-bars');
             }
         });
+    }
+
+    // 2. 圖片輪播控制 (ES5 相容寫法)
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var carousel = document.getElementById('locationCarousel');
+
+    var currentSlide = 0;
+    var slideCount = slides.length;
+    var autoSlideInterval;
+
+    function goToSlide(index) {
+        slides.forEach(function(slide) {
+            slide.classList.remove('active');
+        });
+        dots.forEach(function(dot) {
+            dot.classList.remove('active');
+        });
+
+        currentSlide = (index + slideCount) % slideCount;
+
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('active');
+        }
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentSlide - 1);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            var slideIndex = parseInt(this.getAttribute('data-slide'), 10);
+            goToSlide(slideIndex);
+        });
+    });
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    if (carousel) {
+        startAutoSlide();
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
     }
 });
 </script>
