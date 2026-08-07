@@ -730,6 +730,7 @@ body {
 .locations-header-bg p {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6);
 }
+
 /* 常見問題頁主頁頭區塊 (去除背景色，純背景圖) */
 .faq-header-bg {
     position: relative;

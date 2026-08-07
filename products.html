@@ -112,13 +112,107 @@
             font-size: 11px;
         }
 
+        /* 純圖片輪播區塊 (Carousel) 專屬樣式 */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            height: 480px;
+            margin: 0 auto 50px auto;
+            border-radius: var(--radius-md, 12px);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #0f172a;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 左右切換按鈕 */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.35);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-color, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+        }
+
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+
+        /* 分頁指示點 (Dots) */
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .dot.active, .dot:hover {
+            background: var(--primary-color, #0284c7);
+            width: 28px;
+            border-radius: 6px;
+        }
+
         @media (max-width: 992px) {
             .process-grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .carousel-container { height: 380px; }
         }
 
         @media (max-width: 576px) {
             .process-grid-3 { grid-template-columns: 1fr; }
             .custom-table { display: block; overflow-x: auto; }
+            .carousel-container { height: 260px; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 14px; }
         }
     </style>
 </head>
@@ -135,12 +229,11 @@
             </span>
         </a>
 
-        <!-- 新增漢堡選單按鈕 -->
+        <!-- 漢堡選單按鈕 -->
         <button class="hamburger" id="hamburgerBtn" aria-label="切換選單">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- 加上 id="navLinks" 方便 JS 操控 -->
         <nav class="nav-links" id="navLinks">
             <a href="index.html" class="nav-item">回首頁</a>
             <a href="about.html" class="nav-item">關於新懋</a>
@@ -153,7 +246,6 @@
 </header>
 
     <!-- 主頁頭區塊 -->
-   <!-- 主頁頭區塊 -->
 <section class="products-header-bg">
         <div class="container">
             <span class="badge-tech"><i class="fas fa-cubes"></i> PRODUCTS & SERVICES</span>
@@ -162,7 +254,7 @@
         </div>
     </section>
 
-    <!-- 產品列表區塊 (無頁籤直接陳列) -->
+    <!-- 產品列表區塊 -->
     <section class="section-padding">
         <div class="container">
             <div class="section-title-center" style="margin-bottom: 35px;">
@@ -316,6 +408,39 @@
     <!-- 材質對照與規格參考表 -->
     <section class="section-padding">
         <div class="container">
+
+            <!-- 純圖片輪播區塊 (Carousel) -->
+            <div class="carousel-container" id="productCarousel">
+                <div class="carousel-slide active">
+                    <img src="images/product/product1.jpg" alt="廠內豐富鋁合金板材庫存">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/product/product2.jpg" alt="精密裁切鋸床設備實景">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/product/product3.jpg" alt="高平整度鋁板銑面加工實景">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/product/product4.jpg" alt="多樣化工業鋁擠型與棒材">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/product/product5.jpg" alt="品質檢驗與覆膜出貨防護">
+                </div>
+
+                <!-- 左右切換按鈕 -->
+                <button class="carousel-btn prev" id="prevBtn" aria-label="上一張圖片"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextBtn" aria-label="下一張圖片"><i class="fas fa-chevron-right"></i></button>
+
+                <!-- 分頁指示點 (居中顯示) -->
+                <div class="carousel-dots" id="carouselDots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                </div>
+            </div>
+
             <div class="section-title-center">
                 <span class="sub-heading">TECHNICAL SPECIFICATIONS</span>
                 <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">常見鋁合金材質特性比較表</h2>
@@ -378,18 +503,18 @@
             <p>&copy; 2026 新懋鋁業股份有限公司 All Rights Reserved.</p>
         </div>
     </footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navLinks = document.getElementById('navLinks');
+    // 1. 漢堡選單控制
+    var hamburgerBtn = document.getElementById('hamburgerBtn');
+    var navLinks = document.getElementById('navLinks');
 
     if (hamburgerBtn && navLinks) {
         hamburgerBtn.addEventListener('click', function() {
-            // 切換選單顯示/隱藏
             navLinks.classList.toggle('active');
 
-            // 切換圖示 (三條線 ⇄ X 關閉圖示)
-            const icon = hamburgerBtn.querySelector('i');
+            var icon = hamburgerBtn.querySelector('i');
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
@@ -398,6 +523,71 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.add('fa-bars');
             }
         });
+    }
+
+    // 2. 圖片輪播 (Carousel) 控制邏輯 (ES5 兼容語法)
+    var slides = document.querySelectorAll('.carousel-slide');
+    var dots = document.querySelectorAll('.dot');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var carousel = document.getElementById('productCarousel');
+
+    var currentSlide = 0;
+    var slideCount = slides.length;
+    var autoSlideInterval;
+
+    function goToSlide(index) {
+        slides.forEach(function(slide) {
+            slide.classList.remove('active');
+        });
+        dots.forEach(function(dot) {
+            dot.classList.remove('active');
+        });
+
+        currentSlide = (index + slideCount) % slideCount;
+
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('active');
+        }
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentSlide - 1);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            var slideIndex = parseInt(this.getAttribute('data-slide'), 10);
+            goToSlide(slideIndex);
+        });
+    });
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    if (carousel) {
+        startAutoSlide();
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
     }
 });
 </script>

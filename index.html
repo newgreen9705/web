@@ -44,6 +44,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* 綠能太陽能專區專屬樣式 */
+        .solar-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 35px;
+        }
+
+        .solar-card {
+            background: #ffffff;
+            border-radius: var(--radius-md, 12px);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color, #e2e8f0);
+            transition: all 0.3s ease;
+        }
+
+        .solar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .solar-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #0f172a;
+        }
+
+        .solar-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .solar-card:hover .solar-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .solar-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(16, 185, 129, 0.9); /* 綠色永續標籤 */
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .solar-info {
+            padding: 25px;
+        }
+
+        .solar-info h3 {
+            font-size: 20px;
+            color: var(--dark-bg, #0f172a);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .solar-info p {
+            font-size: 14px;
+            color: var(--text-muted, #64748b);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .solar-grid {
+                grid-template-columns: 1fr;
+            }
+            .solar-img-wrapper {
+                height: 220px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -122,13 +211,52 @@
             </div>
         </div>
     </section>
+
+    <!-- 【新增】綠能永續與現代化太陽能廠房區塊 -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-center">
+                <span class="sub-heading">GREEN ENERGY & SUSTAINABILITY</span>
+                <h2 style="font-size: 28px; color: var(--dark-bg); margin-top: 5px;">響應綠能永續 ‧ 邁向低碳製造</h2>
+                <p style="color: var(--text-muted); font-size: 15px; margin-top: 8px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    新懋鋁業積極實踐 ESG 企業社會責任，於台中廠與高雄廠全面鋪設太陽能光電屋頂系統，以實際行動投入綠電自發自用與節能減碳，為客戶提供更具競爭力與符合永續價值的材料供應服務。
+                </p>
+            </div>
+
+            <div class="solar-grid">
+                <!-- 台中廠太陽能空拍圖卡片 -->
+                <div class="solar-card">
+                    <div class="solar-img-wrapper">
+                        <span class="solar-tag"><i class="fas fa-leaf"></i> 綠能發電廠區</span>
+                        <img src="images/solar-taichung.jpg" alt="新懋鋁業 台中廠太陽能光電屋頂空拍圖">
+                    </div>
+                    <div class="solar-info">
+                        <h3><i class="fas fa-solar-panel" style="color: #0284c7;"></i> 台中總公司 ‧ 綠能發電屋頂</h3>
+                        <p>台中總廠建置現代化太陽能光電系統，有效運用空間轉化潔淨能源，大幅降低運營碳足跡，邁向淨零碳排永續目標。</p>
+                    </div>
+                </div>
+
+                <!-- 高雄廠太陽能空拍圖卡片 -->
+                <div class="solar-card">
+                    <div class="solar-img-wrapper">
+                        <span class="solar-tag"><i class="fas fa-leaf"></i> 低碳永續製造</span>
+                        <img src="images/solar-kaohsiung.jpg" alt="新懋鋁業 高雄廠太陽能光電屋頂空拍圖">
+                    </div>
+                    <div class="solar-info">
+                        <h3><i class="fas fa-solar-panel" style="color: #0284c7;"></i> 高雄廠 ‧ 綠能示範基地</h3>
+                        <p>高雄廠屋頂全面鋪設高效能太陽能板，結合廠內裁切與加工設備，落實綠色製造理念與符合國際綠色供應鏈標準。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!-- Footer 頁尾優勢與 SEO 關鍵字延伸 -->
 <footer class="footer-dark">
     <div class="container">
         <!-- SEO 關鍵字連結引導條 -->
-<div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-size: 0.9rem; color: #a1a1aa; text-align: center;">
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 30px; font-size: 0.9rem; color: #a1a1aa; text-align: center;">
             <strong style="color: #ffffff;">熱門產品服務：</strong>
             <span>中鋁鋁板</span> ｜ 
             <span>各國進口鋁板</span> ｜ 
@@ -182,12 +310,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
-                // 新增：選單開啟時，禁止背景頁面滾動
+                // 選單開啟時，禁止背景頁面滾動
                 document.body.style.overflow = 'hidden';
             } else {
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
-                // 新增：選單關閉時，恢復背景頁面滾動
+                // 選單關閉時，恢復背景頁面滾動
                 document.body.style.overflow = 'auto';
             }
         });
